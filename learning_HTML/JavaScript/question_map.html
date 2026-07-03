@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // QUESTION 1 return array adding 1000 to every element
+        let arr = [1,2,3,4,5];
+        const plusThousand = arr.map( item => {
+            return item + 1000;
+        })
+        console.log(plusThousand); 
+        
+        //QUESTION 2 convert [5,10,15] to [10,20,30]
+        let arr1 = [5,10,15];
+        const dbl = arr1.map(item =>{
+            return item * 2;
+        })
+        console.log(dbl);
+
+        //  QUESTION 3 do the following operations
+        const product = [
+            {name: "Laptop", price: 50000},
+            {name: "Phone", price: 25000}
+        ];
+            //a. make an array of only the prices
+            const myPrice = product.map(item => {
+                return item.price;
+            })
+            console.log(myPrice);
+
+            //b. add 200rs gst to every price   
+            const gst = product.map(item =>{
+                return item.price + 200;
+            })
+            console.log(gst);
+    </script>
+</body>
+</html>

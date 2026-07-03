@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let arr = [{name: "Bhupender", salary: 70, age: 50, country: "India"},
+            {name: "Rohan", salary: 50, age: 14, country: "London"},
+            {name: "Karthik", salary: 3, age: 2, country: "America"},
+            {name: "Suraj", salary: 2, age: 19, country: "Russia"},
+            {name: "Aaryan", salary: 1, age: 70, country: "Japan"}];
+
+            //normally if we use FIND method than it will give only 1 output so instead we use forEach method
+            // which gives all the elements according to the condition applied
+        arr.forEach(element =>{
+            if(element.age >= 18){
+                console.log(element);
+            }
+            else{
+                console.log("He's just a Kid");
+            }
+        })
+
+        arr.forEach(element =>{
+            if(element.name == "Aaryan"){
+                console.log(element);
+            }
+            else{
+                console.log("No Aaryan found");
+            }
+        })
+
+        arr.forEach(element => {
+            if(element.country == "Japan"){
+                console.log(element);
+            }
+            else{
+                console.log("Dosen't belongs to Japan");
+            }
+        })
+
+        arr.forEach(element =>{
+            if(element.name === "Bhupender"){
+                console.log(element);
+            }
+            else{
+                console.log("No Bhupender Found");
+            }
+        })
+
+        arr.forEach(element =>{
+            if(element.age < 2){
+                console.log("element found");
+            }
+            else{
+                console.log("element not found");
+            }
+        })
+
+
+
+
+        arr1 = [10,20,30,40,50];
+        arr1.forEach(element => {
+            console.log(element*2);
+        })
+        //alternative using traditonal for loop
+        for (let i = 0; i < arr1.length; i++) {
+            console.log(arr1[i] * 2);
+        }
+        
+    </script>
+</body>
+</html>

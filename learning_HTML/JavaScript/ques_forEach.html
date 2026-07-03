@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data</title>
+</head>
+<body>
+
+<script>
+    let departments = [
+        {Dname: "IT", Dcode: 58, employees: { id: 1, employee: {}}}
+    ]
+
+    let employees = [
+        { name: "bhupendr", salary: 70, age: 50, country: "india", department: "IT" },
+        { name: "rohan", salary: 50, age: 14, country: "london", department: "Finance" },
+        { name: "kartik", salary: 3, age: 2, country: "america", department: "HR" },
+        { name: "suraj", salary: 2, age: 19, country: "russia", department: "Finance" },
+        { name: "aryan", salary: 1, age: 70, country: "japan", department: "HR" },
+        { name: "aryan", salary: 88, age: 40, country: "japan", department: "IT" },
+        { name: "jatin", salary: 100, age: 12, country: "russia", department: "HR" },
+        { name: "aaditya", salary: 20, age: 19, country: "india", department: "Marketing" },
+        { name: "sachi", salary: 1, age: 2, country: "uganda", department: "Finance" },
+        { name: "khushi", salary: 35, age: 99, country: "brazil", department: "IT" },
+        { name: "parul", salary: 500, age: 34, country: "jamaica", department: "CEO" }
+    ];
+    
+    // 1. The employee is form the HR department, hes/her name is bhupendr and he is from India
+    // print above one for all the employees using for each loop
+        employees.forEach((element) => {
+            console.log("The employee is from the " + element.department + " department, his/her name is " + element.name + " and he/she is from " + element.country);
+        });
+
+    // 2. print the number of people in each department
+    let it = 0;
+    let finance = 0;
+    let hr = 0;
+    let marketing = 0;
+    let ceo = 0;
+    employees.forEach((element) => {
+        if (element.department == "IT") {
+            it++;
+        }
+        if (element.department == "Finance") {
+            finance++;
+        }
+        if (element.department == "HR") {
+            hr++;
+        }
+        if (element.department == "Marketing") {
+            marketing++;
+        }
+        if (element.department == "CEO") {
+            ceo++;
+        }
+    }); 
+    console.log("IT: " + it);
+    console.log("Finance: " + finance);
+    console.log("HR: " + hr);
+    console.log("Marketing: " + marketing);
+    console.log("CEO: " + ceo);
+
+    // 3. Give total salary of each country and show them as xyz: 10000
+    //MANUAL APPROACH
+    let salInd = 0;
+    let salLond = 0;
+    let salAmer = 0;
+    let salRuss = 0;
+    let salJap = 0;
+    let salUga = 0;
+    let salBra = 0;
+    let salJam = 0;
+    employees.forEach((element) => {
+        if (element.country == "india") {
+            salInd = salInd + element.salary;
+        }
+        if (element.country == "london") {
+            salLond = salLond + element.salary;
+        }
+        if (element.country == "america") {
+            salAmer = salAmer + element.salary;
+        }
+        if (element.country == "russia") {
+            salRuss = salRuss + element.salary;
+        }
+        if (element.country == "japan") {
+            salJap = salJap + element.salary;
+        }
+        if (element.country == "uganda") {
+            salUga = salUga + element.salary;
+        }
+        if (element.country == "brazil") {
+            salBra = salBra + element.salary;
+        }
+        if (element.country == "jamaica") {
+            salJam = salJam + element.salary;
+        }
+    });
+    console.log("India: " + salInd);
+    console.log("London: " + salLond);
+    console.log("America: " + salAmer);
+    console.log("Russia: " + salRuss);
+    console.log("Japan: " + salJap);
+    console.log("Uganda: " + salUga);
+    console.log("Brazil: " + salBra);
+    console.log("Jamaica: " + salJam);
+
+
+    // BETTER APPROACH
+    let salary = {};
+
+    employees.forEach((element) => {
+        if (salary[element.country]) {
+            salary[element.country] += element.salary;
+        } else {
+            salary[element.country] = element.salary;
+        }
+    });
+
+console.log(salary);
+    
+    // 5. make new array named HR and Finance and store the whole object which has department HR or finance in their respective arrays
+    let HR = [];
+    let Finance = [];
+    employees.forEach(element => {
+        if(element.department == "HR"){
+            HR.push(element);
+        }
+        else if(element.department == "Finance"){
+            Finance.push(element);
+        }
+    })
+    console.log(HR);
+    console.log(Finance);
+// console.log(employees);
+
+</script>
+
+</body>
+</html>

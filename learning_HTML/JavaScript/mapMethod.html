@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let arr = [{name: "Bhupender", salary: 70, age: 50, country: "India"},
+            {name: "Rohan", salary: 50, age: 14, country: "London"},
+            {name: "Karthik", salary: 3, age: 2, country: "America"},
+            {name: "Suraj", salary: 2, age: 19, country: "Russia"},
+            {name: "Aaryan", salary: 1, age: 70, country: "Japan"}];
+        
+        // QUES: extract out all the names and print them in a saperate array
+        const myNames = arr.map( item => {
+            return item.name;
+        })
+        console.log(myNames);
+
+        const myNames1 = arr.map( item => {
+            return item.name.toUpperCase();
+        })
+        console.log(myNames1);
+
+
+
+
+
+
+
+
+
+
+        // let arr1 = [1,2,3,4,5,6,7,8,9];
+        // const dbl = arr.map(item => {
+        //     return item*2;
+        // })
+    </script>
+</body>
+</html>

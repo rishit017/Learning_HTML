@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const a = Number(prompt("Enter first number: "));
+        const b = Number(prompt("Enter second number: "));
+        const operation = prompt("Enter Operation   : ");
+        function calculator(a, b, operation){
+            if(operation == "add") console.log(a+b);
+            else if(operation == "sub") console.log(a-b);
+            else if(operation == "mul") console.log(a*b);
+            else if(operation == "div") console.log(a/b);
+            else console.log("Invalid Input");
+        }
+
+        calculator(a, b, operation);
+        
+
+    </script>
+</body>
+</html>

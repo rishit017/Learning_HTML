@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let arr = [{name:"Rishit", salary:10, age:10},
+            {name: "Rishabh", salary:20, age:11},
+            {name: "Raghav", salary:30., age:12}]
+        // .find method gives the whole object which satisfies the following condition
+        let x = arr.find(obj => obj.salary === 10);
+        console.log(x);
+        let y = arr.find(obj => obj.age === 10);
+        console.log(y);
+        let z = arr.find(obj => obj.age <= 18);
+        console.log(z);
+        //con of using find: find works in SHORT CIRCUIT WAY i.e if 1 desired output is found it wont 
+        //find further even if there exists a valid output
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let arr = [10, 15, 20, 25, 30, 35, 40];
+        let even = arr.filter((item) => {
+            return item % 2 == 0;
+        });
+        let square = even.map((item) => {
+            return item * item;
+        });
+        console.log(square);
+
+        //--------------------------------------
+        
+        let names = ["priya", "rahul", "amit", "sara"];
+        let upper = names.map((item) => {
+            return item.toUpperCase();
+        });
+        console.log(upper);
+        
+        //--------------------------------------
+        
+        let arr1 = [34, 12, 89, 56, 23, 90, 7];
+        let max = arr1.reduce((largest, item) => {
+            if (item > largest) {
+                return item;
+            }
+            else {
+                return largest;
+            }
+        });
+        console.log(max);
+        
+        //--------------------------------------
+        
+        let products = [
+            {name: "Laptop", price: 50000, category: "Electronics"},
+            {name: "Phone", price: 25000, category: "Electronics"},
+            {name: "Shirt", price: 1200, category: "Clothing"},
+            {name: "TV", price: 40000, category: "Electronics"},
+            {name: "Shoes", price: 3000, category: "Footwear"}
+        ];
+        let electronic = products.filter((item) => {
+            return item.category == "Electronics";
+        });
+        let names1 = electronic.map((item) => {
+            return item.name;
+        });
+        console.log(names1);
+        
+        //--------------------------------------
+
+        let students = [
+            {name: "Rohan", marks: 45},
+            {name: "Priya", marks: 80},
+            {name: "Amit", marks: 65},
+            {name: "Sara", marks: 40},
+            {name: "Karan", marks: 90}
+        ];
+        let passed = students.filter((item) => {
+            return item.marks > 50;
+        });
+        let total = passed.reduce((sum, item) => {
+            return sum + item.marks;
+        }, 0);
+        let average = total / passed.length;
+        console.log(average);
+    </script>
+</body>
+</html>

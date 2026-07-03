@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [1, 2, 3, 4];
+    
+        arr.push(10); //adds element to end
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        arr.unshift(10);  // adds element to the beginning
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        arr.pop();  // removes last element
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+        
+        arr.shift(); //removes first element
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+
+        arr.splice(1,2); //sarting index, no of elemets to be deleted
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        arr.splice(1,2, 100); //sarting index, no of elements to be deleted, the value to be inserted at that index
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        arr.sort();
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+        
+        arr.reverse();
+        for(let i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+    </script>
+</body>
+</html>

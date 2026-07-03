@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //     let employees = [
+    //     { name: "bhupendr", salary: 70, age: 50, country: "india", department: "IT" },
+    //     { name: "rohan", salary: 50, age: 14, country: "london", department: "Finance" },
+    //     { name: "kartik", salary: 3, age: 2, country: "america", department: "HR" },
+    //     { name: "suraj", salary: 2, age: 19, country: "russia", department: "Finance" },
+    //     { name: "aryan", salary: 1, age: 70, country: "japan", department: "HR" },
+    //     { name: "aryan", salary: 88, age: 40, country: "japan", department: "IT" },
+    //     { name: "jatin", salary: 100, age: 12, country: "russia", department: "HR" },
+    //     { name: "aaditya", salary: 20, age: 19, country: "india", department: "Marketing" },
+    //     { name: "sachi", salary: 1, age: 2, country: "uganda", department: "Finance" },
+    //     { name: "khushi", salary: 35, age: 99, country: "brazil", department: "IT" },
+    //     { name: "parul", salary: 500, age: 34, country: "jamaica", department: "CEO" }
+    // ];
+
+    // //reduce salary of each employee by 5 and then print the resultant array
+    // employees.forEach( element =>{
+    //     element.salary = element.salary - 5;
+    // })
+    // console.log(employees);
+
+
+
+    let employees = [
+    {
+        name: "bhupendr",
+        salary: 70,
+        age: 50,
+        country: "india",
+        department: "IT",
+        content_liked: ["food", "Travel_Vlogs", "art", "storytelling"],
+        products_in_cart: [
+            { Pname: "Shirt", cost: 500 },
+            { Pname: "Shoes", cost: 2500 },
+            { Pname: "Watch", cost: 3500 }
+        ]
+    },
+    {
+        name: "rohan",
+        salary: 50,
+        age: 14,
+        country: "london",
+        department: "Finance",
+        content_liked: ["daily_vlogs", "science", "art", "motivational"],
+        products_in_cart: [
+            { Pname: "Shirt", cost: 500 },
+            { Pname: "Headphones", cost: 1800 }
+        ]
+    },
+    {
+        name: "kartik",
+        salary: 3,
+        age: 2,
+        country: "america",
+        department: "HR",
+        content_liked: ["sports", "politics", "online_gaming", "science"],
+        products_in_cart: [
+            { Pname: "Football", cost: 1200 },
+            { Pname: "Shoes", cost: 2500 }
+        ]
+    },
+    {
+        name: "suraj",
+        salary: 2,
+        age: 19,
+        country: "russia",
+        department: "Finance",
+        content_liked: ["Travel_Vlogs", "bike", "politics", "food"],
+        products_in_cart: [
+            { Pname: "Bike Helmet", cost: 2200 },
+            { Pname: "Watch", cost: 3500 }
+        ]
+    },
+    {
+        name: "aryan",
+        salary: 1,
+        age: 70,
+        country: "japan",
+        department: "HR",
+        content_liked: ["history", "motivational", "news", "science"],
+        products_in_cart: [
+            { Pname: "Books", cost: 900 },
+            { Pname: "Laptop", cost: 65000 }
+        ]
+    },
+    {
+        name: "aryan",
+        salary: 88,
+        age: 40,
+        country: "japan",
+        department: "IT",
+        content_liked: ["coding", "technology", "science", "art"],
+        products_in_cart: [
+            { Pname: "Laptop", cost: 65000 },
+            { Pname: "Mouse", cost: 700 },
+            { Pname: "Keyboard", cost: 1500 }
+        ]
+    },
+    {
+        name: "jatin",
+        salary: 100,
+        age: 12,
+        country: "russia",
+        department: "HR",
+        content_liked: ["gaming", "sports", "anime", "online_gaming"],
+        products_in_cart: [
+            { Pname: "Gaming Mouse", cost: 2200 },
+            { Pname: "Headphones", cost: 1800 }
+        ]
+    },
+    {
+        name: "aaditya",
+        salary: 20,
+        age: 19,
+        country: "india",
+        department: "Marketing",
+        content_liked: ["marketing", "business", "motivational", "storytelling"],
+        products_in_cart: [
+            { Pname: "Notebook", cost: 150 },
+            { Pname: "Pen", cost: 50 },
+            { Pname: "Shirt", cost: 500 }
+        ]
+    },
+    {
+        name: "sachi",
+        salary: 1,
+        age: 2,
+        country: "uganda",
+        department: "Finance",
+        content_liked: ["cartoons", "food", "science", "daily_vlogs"],
+        products_in_cart: [
+            { Pname: "Chocolate", cost: 100 },
+            { Pname: "Books", cost: 900 }
+        ]
+    },
+    {
+        name: "khushi",
+        salary: 35,
+        age: 99,
+        country: "brazil",
+        department: "IT",
+        content_liked: ["Travel_Vlogs", "dance", "food", "art"],
+        products_in_cart: [
+            { Pname: "Dress", cost: 1800 },
+            { Pname: "Watch", cost: 3500 },
+            { Pname: "Shoes", cost: 2500 }
+        ]
+    },
+    {
+        name: "parul",
+        salary: 500,
+        age: 34,
+        country: "jamaica",
+        department: "CEO",
+        content_liked: ["leadership", "business", "technology", "motivational"],
+        products_in_cart: [
+            { Pname: "Laptop", cost: 65000 },
+            { Pname: "Watch", cost: 3500 },
+            { Pname: "Phone", cost: 45000 }
+        ]
+    }    
+];
+
+
+
+
+        //  QUES1. the amount Bhupendr can spend right now is (avg of all the cart contents cost - do this for all the objects)
+        employees.forEach( element => {
+            let total = 0;
+            element.products_in_cart.forEach( item =>{
+                total = total + item.cost ;
+            })
+            let avg = total / element.products_in_cart.length;
+            console.log("The average amount " + element.name + " can spend right now is " + avg);
+        })
+
+        //QUES 2. add 2 zeros at the end of salaries of all the objects
+        employees.forEach(element => {
+            element.salary = element.salary * 100;
+        })
+        console.log(employees);
+
+        //QUES 3. check if the employee can buy the most expensive thing from his cart after dooing 50% his salary
+        employees.forEach((element) => {
+            let half = element.salary / 2;
+            let max = 0;
+            element.products_in_cart.forEach((item) => {
+                if (item.cost > max) {
+                    max = item.cost;
+                }
+            });
+            if (half >= max) {
+                console.log(element.name + " can buy the most expensive item.");
+            } else {
+                console.log(element.name + " cannot buy the most expensive item.");
+            }   
+        });
+
+        //QUES 4 make a new array containing all the distinct content_liked for all the objects
+        let distinctContent = [];
+        employees.forEach((element) => {
+            element.content_liked.forEach((item) => {
+                if (!distinctContent.includes(item)) {
+                    distinctContent.push(item);
+                }
+            });
+        });
+        console.log(distinctContent);
+
+        //QUES 5 now from the above array "distinceContent":
+                // the first content in the array the person spends 1%, on second 2% and so on
+                // now calculate the total money spent on content from the total salary
+
+        let totalSal = 0;
+        employees.forEach( element => {
+            totalSal += element.salary;
+        })
+        let totalSpent = 0;
+        distinctContent.forEach((element, index) => {
+            totalSpent = totalSpent + ((index + 1) * totalSal )/100;
+        })
+        console.log(totalSal);
+        console.log(totalSpent);
+
+        // QUES 6 same as above just change money spent from 1%, 2%, 3%.. to the string length of their own
+        // QUES 7 make a concatinated string of all the elements of distinctContent array
+        let myConcat = "";
+        distinctContent.forEach(element => {
+            myConcat = myConcat.concat(element);
+        })
+        console.log(myConcat);
+        
+    </script>
+</body>
+</html>
