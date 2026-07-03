@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+           
+        .btn{
+            width: 200px;
+            height: 60px;
+            
+            font-size: large;
+            border-radius: 0px;
+            background:  white;
+            transition: transform 0.4s ease-in-out,
+            border-radius 0.4s ease-in-out,
+            background-color 0.4s ease-in-out
+            
+            
+            ;
+        }
+
+        .btn:hover  {
+            transform: scale(1.15);
+            border-radius: 10px;
+            background: linear-gradient(45deg, #f385ff, #ffffff);
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <button class="btn">Submit Button</button>
+</body>
+</html>

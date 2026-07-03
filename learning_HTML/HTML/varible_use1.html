@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+
+    <style>
+
+        :root{
+
+            --main-height: 400px;
+            --main-width: 800px;
+            --main-border-radius: 2px;
+            --main-background-color: rgb(67,67,67);
+            --main-position: relative;
+            --main-margin-left: 50px;
+            --main-margin-top: 50px;
+
+            --rect1-height: 60px;
+            --rect1-width: 700px;
+            --rect1-border-radius: 2px;
+            --rect1-background-color: red;
+            --rect1-position: relative;
+            --rect1-top: 20px;
+            --rect1-left: 50px;
+
+            --innerbox1-height: 70px;
+            --innerbox1-width: 150px;
+            --innerbox1-border-radius: 2px;
+            --innerbox1-background-color: blue;
+            --innerbox1-position: relative;
+            --innerbox1-top: 60px;
+            --innerbox1-left: 50px;
+
+            --innerbox2-height: 70px;
+            --innerbox2-width: 150px;
+            --innerbox2-border-radius: 2px;
+            --innerbox2-background-color: blue;
+            --innerbox2-position: relative;
+            --innerbox2-top: -10px;
+            --innerbox2-left: 325px;
+
+            --innerbox3-height: 70px;
+            --innerbox3-width: 150px;
+            --innerbox3-border-radius: 2px;
+            --innerbox3-background-color: blue;
+            --innerbox3-position: relative;
+            --innerbox3-top: -80px;
+            --innerbox3-left: 600px;
+
+            --circle-height: 80px;
+            --circle-width: 80px;
+            --circle-border-radius: 50%;
+            --circle-background-color: green;
+            --circle-position: relative;
+            --circle-top: -20px;
+            --circle-left: 70px;
+
+            --rectangle-height: 60px;
+            --rectangle-width: 400px;
+            --rectangle-border-radius: 2px;
+            --rectangle-background-color: yellow;
+            --rectangle-position: relative;
+            --rectangle-top: -100px;
+            --rectangle-left: 300px;
+        }
+
+        .outerbox{
+            height: var(--main-height);
+            width: var(--main-width);
+            border-radius: var(--main-border-radius);
+            background-color: var(--main-background-color);
+            position: var(--main-position);
+            margin-left: var(--main-margin-left);
+            margin-top: var(--main-margin-top);
+        }
+
+        .rect1{
+            height: var(--rect1-height);
+            width: var(--rect1-width);
+            border-radius: var(--rect1-border-radius);
+            background-color: var(--rect1-background-color);
+            position: var(--rect1-position);
+            top: var(--rect1-top);
+            left: var(--rect1-left);
+        }
+
+        .innerbox1{
+            height: var(--innerbox1-height);
+            width: var(--innerbox1-width);
+            border-radius: var(--innerbox1-border-radius);
+            background-color: var(--innerbox1-background-color);
+            position: var(--innerbox1-position);
+            top: var(--innerbox1-top);
+            left: var(--innerbox1-left);
+        }
+
+        .innerbox2{
+            height: var(--innerbox2-height);
+            width: var(--innerbox2-width);
+            border-radius: var(--innerbox2-border-radius);
+            background-color: var(--innerbox2-background-color);
+            position: var(--innerbox2-position);
+            top: var(--innerbox2-top);
+            left: var(--innerbox2-left);
+        }
+
+        .innerbox3{
+            height: var(--innerbox3-height);
+            width: var(--innerbox3-width);
+            border-radius: var(--innerbox3-border-radius);
+            background-color: var(--innerbox3-background-color);
+            position: var(--innerbox3-position);
+            top: var(--innerbox3-top);
+            left: var(--innerbox3-left);
+        }
+
+        .circle{
+            height: var(--circle-height);
+            width: var(--circle-width);
+            border-radius: var(--circle-border-radius);
+            background-color: var(--circle-background-color);
+            position: var(--circle-position);
+            top: var(--circle-top);
+            left: var(--circle-left);
+        }
+
+        .rectangle{
+            height: var(--rectangle-height);
+            width: var(--rectangle-width);
+            border-radius: var(--rectangle-border-radius);
+            background-color: var(--rectangle-background-color);
+            position: var(--rectangle-position);
+            top: var(--rectangle-top);
+            left: var(--rectangle-left);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="outerbox">
+
+        <div class="rect1"></div>
+
+        <div class="innerbox1"></div>
+        <div class="innerbox2"></div>
+        <div class="innerbox3"></div>
+
+        <div class="circle"></div>
+
+        <div class="rectangle"></div>
+
+    </div>
+
+</body>
+</html>

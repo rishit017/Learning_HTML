@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard UI</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(
+        135deg,
+        #05061f,
+        #0a0b28,
+        #11153f
+    );
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    display:grid;
+    grid-template-columns:350px 350px 350px;
+    grid-template-rows:180px 280px 220px;
+    gap:20px;
+}
+
+.card{
+    border-radius:25px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+    transition:.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 20px 40px rgba(49,86,255,.35);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    width:200%;
+    height:200%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.12),
+        transparent
+    );
+
+    transform:rotate(25deg);
+    transition:.8s;
+}
+
+.card:hover::before{
+    top:100%;
+    left:100%;
+}
+
+.apps{
+    background:#1b1a57;
+    grid-column:1;
+    grid-row:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.apps-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    color:white;
+    font-weight:bold;
+}
+
+.launch{
+    background:#34308a;
+    color:white;
+
+    padding:8px 16px;
+    border-radius:20px;
+
+    font-size:12px;
+    white-space:nowrap;
+
+    transition:.3s;
+    cursor:pointer;
+}
+
+.launch:hover{
+    transform:scale(1.08);
+    background:#4c49c7;
+    box-shadow:0 0 20px rgba(255,255,255,.25);
+}
+
+.icons{
+    display:flex;
+    gap:12px;
+    margin-top:55px;
+}
+
+.icon{
+    width:40px;
+    height:40px;
+
+    background:#3156ff;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.icon:hover{
+    transform:
+        translateY(-8px)
+        rotate(8deg)
+        scale(1.15);
+
+    box-shadow:0 0 20px #3156ff;
+}
+
+.likes{
+    background:#1b1a57;
+
+    grid-column:2;
+    grid-row:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+}
+
+.likes h1{
+    font-size:85px;
+}
+
+.likes p{
+    font-size:18px;
+}
+
+.viewers{
+    background:#1b1a57;
+
+    grid-column:3;
+    grid-row:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    position:relative;
+}
+
+.live{
+    position:absolute;
+    top:15px;
+    right:15px;
+
+    background:red;
+    color:white;
+
+    padding:5px 12px;
+    border-radius:20px;
+
+    font-size:12px;
+
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:.4;
+    }
+}
+
+.viewers h1{
+    font-size:85px;
+}
+
+.viewers p{
+    font-size:18px;
+}
+
+.users{
+    background:#1b1a57;
+
+    grid-column:1;
+    grid-row:2;
+
+    color:white;
+}
+
+.users-top{
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+}
+
+.users h1{
+    margin-top:50px;
+    font-size:95px;
+}
+
+.design{
+    background:#3156ff;
+
+    grid-column:2;
+    grid-row:2;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    font-size:55px;
+    font-weight:bold;
+}
+
+.subscribers{
+    background:#edf2fb;
+
+    grid-column:3;
+    grid-row:2 / 4;
+
+    color:black;
+}
+
+.sub-top{
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+}
+
+.subscribers h1{
+    margin-top:250px;
+    font-size:95px;
+}
+
+.learn{
+    background:#1b1a57;
+
+    grid-column:1 / 3;
+    grid-row:3;
+
+    color:white;
+
+    display:flex;
+    align-items:flex-start;
+}
+
+.learn h2{
+    font-size:28px;
+    max-width:600px;
+}
+
+.likes h1,
+.viewers h1,
+.users h1,
+.subscribers h1{
+    animation:pulse 3s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+/* PARTICLES */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.particles span{
+    position:absolute;
+    width:8px;
+    height:8px;
+
+    background:rgba(255,255,255,.25);
+    border-radius:50%;
+
+    animation:float 12s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%;animation-delay:0s;}
+.particles span:nth-child(2){left:20%;animation-delay:2s;}
+.particles span:nth-child(3){left:35%;animation-delay:4s;}
+.particles span:nth-child(4){left:50%;animation-delay:1s;}
+.particles span:nth-child(5){left:65%;animation-delay:5s;}
+.particles span:nth-child(6){left:75%;animation-delay:3s;}
+.particles span:nth-child(7){left:85%;animation-delay:6s;}
+.particles span:nth-child(8){left:95%;animation-delay:2s;}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    20%,80%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="container">
+
+    <div class="card apps">
+
+        <div class="apps-top">
+            <div>A complete family of Apps</div>
+
+            <div class="launch">
+                Launch Apps →
+            </div>
+        </div>
+
+        <div class="icons">
+
+            <div class="icon">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+
+            <div class="icon">
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+
+            <div class="icon">
+                <i class="fa-brands fa-twitter"></i>
+            </div>
+
+            <div class="icon">
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+
+            <div class="icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card likes">
+        <h1>25K</h1>
+        <p>Weekly Likes</p>
+    </div>
+
+    <div class="card viewers">
+        <div class="live">LIVE</div>
+        <h1>50K</h1>
+        <p>Weekly Viewers</p>
+    </div>
+
+    <div class="card users">
+
+        <div class="users-top">
+            <span>Active Users</span>
+            <span>+154</span>
+        </div>
+
+        <h1>1,538</h1>
+
+    </div>
+
+    <div class="card design">
+        DESIGN
+    </div>
+
+    <div class="card subscribers">
+
+        <div class="sub-top">
+            <span>Total Subscribers</span>
+            <span>+7%</span>
+        </div>
+
+        <h1>200K</h1>
+
+    </div>
+
+    <div class="card learn">
+
+        <h2>
+            A place to learn UI Design &
+            Web Design.
+        </h2>
+
+    </div>
+
+</div>
+
+</body>
+</html>

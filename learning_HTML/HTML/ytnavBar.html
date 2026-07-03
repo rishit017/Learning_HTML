@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Navbar</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 2000px;
+            font-family: Arial, sans-serif;
+        }
+        .navbar{
+            width: 100%;
+            height: 140px;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 10px;
+            z-index: 1000;
+        }
+        .topnav{
+            width: 100%;
+            height: 60px;
+        }
+        .menu{
+            width: 35px;
+            height: 35px;
+            background-color: #2f2f2f;
+            display: inline-block;
+            border-radius: 5px;
+            margin-left: 20px;
+            margin-top: 10px;
+            vertical-align: middle;
+        }
+        .logo{
+            width: 140px;
+            height: 35px;
+            background-color: #2f2f2f;
+            display: inline-block;
+            margin-left: 15px;
+            vertical-align: middle;
+            position: relative;
+            top: 5px;
+        }
+        .searchbar{
+            width: 700px;
+            height: 48px;
+            background-color: #3b3a3a;
+            /* border: 1px solid #303030; */
+            border-radius: 30px;
+            display: inline-block;
+            margin-left: 260px;
+            vertical-align: middle;
+        }
+        .mic{
+            width: 45px;
+            height: 45px;
+            background-color: #2f2f2f;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 250px;
+            vertical-align: middle;
+        }
+        .create{
+            width: 120px;
+            height: 42px;
+            background-color: #2f2f2f;
+            border-radius: 25px;
+            display: inline-block;
+            margin-left: 210px;
+            vertical-align: middle;
+            display: none;
+        }
+        .bell{
+            width: 30px;
+            height: 30px;
+            background-color: #2f2f2f;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 20px;
+            vertical-align: middle;
+            display: none;
+        }
+        .dp{
+            width: 40px;
+            height: 40px;
+            background-color: grey;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 20px;
+            vertical-align: middle;
+            display: none;
+        }
+        .categorybar{
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+        .category{
+            height: 38px;
+            background-color: #2f2f2f;
+            border-radius: 10px;
+            display: inline-block;
+            margin-right: 12px;
+        }
+        .all{
+            width: 50px;
+            background-color: #f1f1f1;
+            margin-left: 355px;
+        }
+        .gaming{
+            width: 95px;
+        }
+        .music{
+            width: 90px;
+        }
+        .mixes{
+            width: 85px;
+        }
+        .rocket{
+            width: 150px;
+        }
+        .clash{
+            width: 140px;
+        }
+        .live{
+            width: 70px;
+        }
+        .computers{
+            width: 180px;
+        }
+        .display{
+            width: 160px;
+        }
+        .portable{
+            width: 290px;
+        }
+        .rockstar{
+            width: 170px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="topnav">
+            <div class="menu"></div>
+            <div class="logo"></div>
+            <div class="searchbar"></div>
+            <div class="mic"></div>
+            <div class="create"></div>
+            <div class="bell"></div>
+            <div class="dp"></div>
+        </div>
+        <div class="categorybar">
+            <div class="category all"></div>
+            <div class="category gaming"></div>
+            <div class="category music"></div>
+            <div class="category mixes"></div>
+            <div class="category rocket"></div>
+            <div class="category clash"></div>
+            <div class="category live"></div>
+            <div class="category computers"></div>
+            <div class="category display"></div>
+            <div class="category portable"></div>
+            <div class="category rockstar"></div>
+        </div>
+    </div>
+</body>
+</html>

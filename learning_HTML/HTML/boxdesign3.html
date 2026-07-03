@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Design</title>
+
+    <style>
+
+        body{
+            background-color: white;
+        }
+
+        .parent{
+            width: 900px;
+
+            background-color: black;
+
+            padding: 15px;
+
+            box-sizing: border-box;
+        }
+
+        /* COMMON RED BOX STYLE */
+
+        .box{
+            background-color: red;
+        }
+
+        /* TOP ROW */
+
+        .top{
+            display: flex;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+        .top-left{
+            height: 100px;
+            width: 180px;
+        }
+
+        .top-right{
+            height: 100px;
+
+            flex: 1;
+        }
+
+        /* MIDDLE ROW */
+
+        .middle{
+            height: 150px;
+
+            background-color: red;
+
+            display: flex;
+
+            justify-content: space-evenly;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        /* SHAPES */
+
+        .circle{
+            height: 90px;
+            width: 90px;
+
+            background-color: yellow;
+
+            border-radius: 50%;
+        }
+
+        .square{
+            height: 90px;
+            width: 90px;
+
+            background-color: yellow;
+        }
+
+        /* BOTTOM ROW */
+
+        .bottom{
+            display: flex;
+
+            gap: 15px;
+        }
+
+        .bottom-left{
+            height: 100px;
+
+            flex: 1;
+
+            position: relative;
+        }
+
+        .bottom-right{
+            height: 100px;
+            width: 220px;
+
+            position: relative;
+        }
+
+        /* INNER RECTANGLES */
+
+        .inner-box{
+            height: 80px;
+            width: 90%;
+
+            background-color: yellow;
+
+            margin: auto;
+
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="parent">
+
+        <!-- TOP ROW -->
+
+        <div class="top">
+
+            <div class="box top-left"></div>
+
+            <div class="box top-right"></div>
+
+        </div>
+
+        <!-- MIDDLE ROW -->
+
+        <div class="middle">
+
+            <div class="circle"></div>
+
+            <div class="square"></div>
+
+            <div class="circle"></div>
+
+            <div class="square"></div>
+
+        </div>
+
+        <!-- BOTTOM ROW -->
+
+        <div class="bottom">
+
+            <div class="box bottom-left">
+
+                <div class="inner-box"></div>
+
+            </div>
+
+            <div class="box bottom-right">
+
+                <div class="inner-box"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

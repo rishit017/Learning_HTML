@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AdminLTE 4 | Dashboard</title>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1f2b;
+    color: #c9cdd6;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #2d3240;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    z-index: 100;
+    overflow-y: auto;
+  }
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px;
+    background: #252a37;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid #3a3f52;
+  }
+  .sidebar-brand .brand-icon {
+    width: 34px; height: 34px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; color: #2d3240; font-size: 1rem;
+  }
+  .sidebar-section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    padding: 14px 18px 5px;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    color: #c9cdd6;
+    font-size: 0.9rem;
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .sidebar-item:hover { background: #353c52; }
+  .sidebar-item .item-left {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sidebar-item .item-icon { font-size: 0.95rem; color: #aaa; }
+  .sidebar-item .chevron { font-size: 0.7rem; color: #666; }
+
+  /* labels */
+  .sidebar-label-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 18px;
+    font-size: 0.88rem; color: #c9cdd6; cursor: default;
+  }
+  .label-dot {
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: transparent;
+  }
+  .label-dot.red   { border-color: #e05252; }
+  .label-dot.yellow{ border-color: #e0c340; }
+  .label-dot.cyan  { border-color: #40b5e0; }
+
+  /* level dots */
+  .level-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: #4a505f;
+    border: 2px solid #6b7280;
+    flex-shrink: 0;
+  }
+
+  /* view docs button */
+  .sidebar-docs-btn {
+    margin: auto 14px 14px;
+    padding: 9px 14px;
+    border: 1px solid #4a505f;
+    border-radius: 5px;
+    color: #c9cdd6;
+    font-size: 0.83rem;
+    display: flex; align-items: center; gap: 8px;
+    cursor: default;
+  }
+
+  /* ── Main wrapper ── */
+  .main-wrapper {
+    margin-left: 240px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ── Top Navbar ── */
+  .topnav {
+    background: #252a37;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 18px;
+    border-bottom: 1px solid #3a3f52;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topnav .hamburger { font-size: 1.1rem; color: #aaa; cursor: default; }
+  .topnav .nav-link {
+    display: flex; align-items: center; gap: 7px;
+    color: #aaa; font-size: 0.87rem; cursor: default;
+  }
+  .topnav .nav-right {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .topnav .nav-icon { font-size: 1.05rem; color: #aaa; cursor: default; position: relative; }
+  .badge {
+    position: absolute; top: -6px; right: -8px;
+    background: #3b82f6; color: #fff;
+    font-size: 0.6rem; font-weight: 700;
+    border-radius: 10px; padding: 1px 4px;
+    min-width: 16px; text-align: center;
+  }
+  .badge.green { background: #22c55e; }
+  .topnav .user-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; color: #fff;
+    cursor: default;
+  }
+  .topnav .user-name { font-size: 0.87rem; color: #c9cdd6; cursor: default; }
+
+  /* ── Page Content ── */
+  .page-content {
+    padding: 20px 22px;
+    flex: 1;
+  }
+
+  /* Breadcrumb row */
+  .breadcrumb-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .page-title { font-size: 1.55rem; font-weight: 600; color: #e2e6ea; }
+  .breadcrumb-nav { font-size: 0.82rem; color: #6b7280; }
+  .breadcrumb-nav a { color: #3b82f6; text-decoration: none; }
+
+  /* ── Stat Cards ── */
+  .stat-cards {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    flex: 1;
+    border-radius: 6px;
+    padding: 18px 18px 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .stat-card.blue   { background: #1d6fe8; }
+  .stat-card.green  { background: #1a7a45; }
+  .stat-card.yellow { background: #c59a00; }
+  .stat-card.red    { background: #c0392b; }
+
+  .stat-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .stat-card-number {
+    font-size: 2rem; font-weight: 700; color: #fff;
+  }
+  .stat-card-label {
+    font-size: 0.88rem; color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+  }
+  .stat-card-footer {
+    background: rgba(0,0,0,0.15);
+    margin: 0 -18px;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+    display: flex; align-items: center; gap: 6px;
+    cursor: default;
+  }
+  .stat-card-footer a { color: rgba(255,255,255,0.9); }
+
+  /* ── Bottom Section ── */
+  .bottom-section {
+    display: flex;
+    gap: 16px;
+  }
+  .bottom-left  { flex: 1 1 0; min-width: 0; }
+  .bottom-right { width: 340px; flex-shrink: 0; }
+
+  /* Sales Graph Card */
+  .card {
+    background: #252a37;
+    border-radius: 6px;
+    border: 1px solid #323749;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #323749;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-header .card-title { font-size: 0.95rem; font-weight: 600; color: #e2e6ea; }
+  .card-header .card-tools { display: flex; gap: 8px; }
+  .card-tool-btn {
+    width: 22px; height: 22px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: #aaa; cursor: default;
+  }
+  .card-body { padding: 14px 16px; }
+
+  /* Sales graph canvas */
+  .chart-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  .chart-yaxis {
+    position: absolute; left: 0; top: 0; bottom: 30px;
+    display: flex; flex-direction: column-reverse;
+    justify-content: space-between;
+    padding-left: 2px;
+    width: 30px;
+  }
+  .chart-yaxis span {
+    font-size: 0.7rem; color: #555d70;
+    line-height: 1;
+  }
+  .chart-inner {
+    position: absolute; left: 32px; right: 0; top: 0; bottom: 30px;
+  }
+  .chart-inner svg { width: 100%; height: 100%; display: block; }
+  .chart-xaxis {
+    position: absolute; bottom: 0; left: 32px; right: 0; height: 26px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 2px;
+  }
+  .chart-xaxis span { font-size: 0.7rem; color: #555d70; }
+
+  /* ── Right panel (Sales Value map card) ── */
+  .sales-map-card {
+    background: #1d6fe8;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .sales-map-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px;
+  }
+  .sales-map-header .title { font-size: 0.95rem; font-weight: 600; color: #fff; }
+  .sales-map-header .minus-btn {
+    width: 20px; height: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1rem; cursor: default;
+  }
+  .map-zoom-btns {
+    display: flex; flex-direction: column; gap: 1px;
+    position: absolute;
+    z-index: 2;
+    margin: 8px;
+  }
+  .map-zoom-btn {
+    width: 22px; height: 22px;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; color: #fff; cursor: default;
+    font-weight: 700;
+  }
+  .map-wrapper {
+    position: relative;
+    background: #1d6fe8;
+    height: 190px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-wrapper img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    filter: brightness(0.9) saturate(0.7) hue-rotate(10deg);
+  }
+  /* Canada tooltip */
+  .map-tooltip {
+    position: absolute;
+    top: 28%; left: 20%;
+    background: #7c3aed;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .map-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #7c3aed;
+    border-bottom: none;
+  }
+
+  /* mini sparklines row */
+  .sparklines-row {
+    display: flex;
+    background: rgba(0,0,0,0.2);
+  }
+  .sparkline-item {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 10px 6px 8px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .sparkline-item:last-child { border-right: none; }
+  .sparkline-item svg { width: 100%; height: 40px; display: block; }
+  .sparkline-label { font-size: 0.75rem; color: rgba(255,255,255,0.85); margin-top: 5px; }
+
+  /* ── Direct Chat ── */
+  .direct-chat-card {
+    margin-top: 16px;
+    background: #252a37;
+    border-radius: 6px;
+    border: 1px solid #323749;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .direct-chat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid #323749;
+  }
+  .direct-chat-header .title { font-size: 0.95rem; font-weight: 600; color: #e2e6ea; }
+  .chat-header-tools {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chat-badge {
+    background: #3b82f6; color: #fff; border-radius: 10px;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 2px 7px;
+  }
+  .chat-tool-icon { color: #777; font-size: 0.85rem; cursor: default; }
+
+  /* messages area */
+  .chat-messages {
+    height: 230px;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .chat-messages::-webkit-scrollbar { width: 5px; }
+  .chat-messages::-webkit-scrollbar-track { background: #1e2330; }
+  .chat-messages::-webkit-scrollbar-thumb { background: #3a3f52; border-radius: 3px; }
+
+  .chat-msg-time {
+    text-align: center;
+    font-size: 0.72rem; color: #6b7280;
+    margin: 2px 0;
+  }
+  .chat-msg-row {
+    display: flex; align-items: flex-end; gap: 8px;
+  }
+  .chat-msg-row.right { flex-direction: row-reverse; }
+
+  .chat-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+  }
+  .chat-avatar.sarah {
+    background: linear-gradient(135deg, #ec4899, #f97316);
+  }
+  .chat-bubble {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .chat-bubble.blue { background: #3b82f6; color: #fff; }
+  .chat-bubble.dark { background: #2d3748; color: #c9cdd6; }
+
+  .chat-sender-name {
+    font-size: 0.72rem; color: #9ca3af;
+    margin-bottom: 2px;
+  }
+  .chat-msg-col { display: flex; flex-direction: column; }
+  .chat-msg-col.right { align-items: flex-end; }
+
+  /* input area */
+  .chat-input-area {
+    display: flex; gap: 0;
+    border-top: 1px solid #323749;
+  }
+  .chat-input {
+    flex: 1;
+    background: #1e2330;
+    border: none; outline: none;
+    padding: 10px 14px;
+    color: #c9cdd6;
+    font-size: 0.87rem;
+  }
+  .chat-input::placeholder { color: #555d70; }
+  .chat-send-btn {
+    background: #3b82f6;
+    color: #fff; border: none;
+    padding: 10px 18px;
+    font-size: 0.87rem; font-weight: 600;
+    cursor: default;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    background: #252a37;
+    border-top: 1px solid #323749;
+    padding: 12px 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; color: #6b7280;
+    margin-left: 0; /* already inside main-wrapper */
+  }
+  .footer a { color: #3b82f6; text-decoration: none; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">A</div>
+    AdminLTE 4
+  </div>
+
+  <div class="sidebar-item">
+    <div class="item-left">
+      <span class="item-icon">&#9998;</span>
+      Forms
+    </div>
+    <span class="chevron">&#9656;</span>
+  </div>
+
+  <div class="sidebar-item">
+    <div class="item-left">
+      <span class="item-icon">&#8862;</span>
+      Tables
+    </div>
+    <span class="chevron">&#9656;</span>
+  </div>
+
+  <div class="sidebar-section-label">PAGES</div>
+
+  <div class="sidebar-item">
+    <div class="item-left">
+      <span class="item-icon">&#9635;</span>
+      Pages
+    </div>
+    <span class="chevron">&#9656;</span>
+  </div>
+
+  <div class="sidebar-section-label">EXAMPLES</div>
+
+  <div class="sidebar-item">
+    <div class="item-left">
+      <span class="item-icon">&#10132;</span>
+      Auth
+    </div>
+    <span class="chevron">&#9656;</span>
+  </div>
+
+  <div class="sidebar-section-label">MULTI LEVEL EXAMPLE</div>
+
+  <div class="sidebar-label-item">
+    <div class="level-dot"></div>
+    Level 1
+  </div>
+  <div class="sidebar-item" style="padding-left:18px;">
+    <div class="item-left">
+      <div class="level-dot"></div>
+      Level 1
+    </div>
+    <span class="chevron">&#9656;</span>
+  </div>
+  <div class="sidebar-label-item">
+    <div class="level-dot"></div>
+    Level 1
+  </div>
+
+  <div class="sidebar-section-label">LABELS</div>
+
+  <div class="sidebar-label-item">
+    <div class="label-dot red"></div>
+    Important
+  </div>
+  <div class="sidebar-label-item">
+    <div class="label-dot yellow"></div>
+    Warning
+  </div>
+  <div class="sidebar-label-item">
+    <div class="label-dot cyan"></div>
+    Informational
+  </div>
+
+  <div style="flex:1;"></div>
+  <div class="sidebar-docs-btn">
+    <span>&#9633;</span> View documentation
+  </div>
+</aside>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+<div class="main-wrapper">
+
+  <!-- Top Navbar -->
+  <nav class="topnav">
+    <span class="hamburger">&#9776;</span>
+    <div class="nav-link">
+      <span>&#9741;</span> Live preview
+    </div>
+    <div class="nav-link">
+      <span>&#128196;</span> Documentation
+    </div>
+
+    <div class="nav-right">
+      <div class="nav-icon" style="position:relative;">
+        &#128269;
+      </div>
+      <div class="nav-icon" style="position:relative;">
+        &#128172;
+        <span class="badge">3</span>
+      </div>
+      <div class="nav-icon" style="position:relative;">
+        &#128276;
+        <span class="badge green">15</span>
+      </div>
+      <div class="nav-icon">&#10064;</div>
+      <div class="nav-icon">&#9790;</div>
+      <div class="user-avatar">AP</div>
+      <div class="user-name">Alexander Pierce</div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="page-content">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-row">
+      <h1 class="page-title">Dashboard</h1>
+      <div class="breadcrumb-nav">
+        <a href="#">Home</a> / Dashboard
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stat-cards">
+
+      <!-- Blue -->
+      <div class="stat-card blue">
+        <div class="stat-card-top">
+          <div>
+            <div class="stat-card-number">150</div>
+            <div class="stat-card-label">New Orders</div>
+          </div>
+        </div>
+        <div class="stat-card-footer">More info &nbsp;&#128279;</div>
+      </div>
+
+      <!-- Green -->
+      <div class="stat-card green">
+        <div class="stat-card-top">
+          <div>
+            <div class="stat-card-number">53%</div>
+            <div class="stat-card-label">Bounce Rate</div>
+          </div>
+        </div>
+        <div class="stat-card-footer">More info &nbsp;&#128279;</div>
+      </div>
+
+      <!-- Yellow -->
+      <div class="stat-card yellow">
+        <div class="stat-card-top">
+          <div>
+            <div class="stat-card-number">44</div>
+            <div class="stat-card-label">User Registrations</div>
+          </div>
+        </div>
+        <div class="stat-card-footer">More info &nbsp;&#128279;</div>
+      </div>
+
+      <!-- Red -->
+      <div class="stat-card red">
+        <div class="stat-card-top">
+          <div>
+            <div class="stat-card-number">65</div>
+            <div class="stat-card-label">Unique Visitors</div>
+          </div>
+        </div>
+        <div class="stat-card-footer">More info &nbsp;&#128279;</div>
+      </div>
+
+    </div><!-- /stat-cards -->
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+
+      <!-- Sales Value Chart -->
+      <div class="bottom-left">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Sales Value</span>
+          </div>
+          <div class="card-body" style="padding:14px 10px 10px;">
+            <div class="chart-container">
+
+              <!-- Y axis labels -->
+              <div class="chart-yaxis">
+                <span>0</span>
+                <span>20</span>
+                <span>40</span>
+                <span>60</span>
+                <span>80</span>
+                <span>100</span>
+              </div>
+
+              <!-- SVG Chart -->
+              <div class="chart-inner">
+                <svg viewBox="0 0 600 270" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="greenFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.5"/>
+                      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <linearGradient id="blueFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Horizontal grid lines -->
+                  <line x1="0" y1="0"   x2="600" y2="0"   stroke="#3a3f52" stroke-width="1"/>
+                  <line x1="0" y1="54"  x2="600" y2="54"  stroke="#3a3f52" stroke-width="1"/>
+                  <line x1="0" y1="108" x2="600" y2="108" stroke="#3a3f52" stroke-width="1"/>
+                  <line x1="0" y1="162" x2="600" y2="162" stroke="#3a3f52" stroke-width="1"/>
+                  <line x1="0" y1="216" x2="600" y2="216" stroke="#3a3f52" stroke-width="1"/>
+                  <line x1="0" y1="270" x2="600" y2="270" stroke="#3a3f52" stroke-width="1"/>
+
+                  <!-- Green area (upper wave) -->
+                  <path d="M0,108 C40,95 80,75 120,85 C160,95 200,78 240,75 C280,72 320,88 360,92 C400,96 450,80 500,88 C540,95 580,100 600,105
+                           L600,270 L0,270 Z"
+                        fill="url(#greenFill)" />
+                  <path d="M0,108 C40,95 80,75 120,85 C160,95 200,78 240,75 C280,72 320,88 360,92 C400,96 450,80 500,88 C540,95 580,100 600,105"
+                        fill="none" stroke="#22c55e" stroke-width="2.5"/>
+
+                  <!-- Blue area (lower wave) -->
+                  <path d="M0,175 C40,168 80,155 120,170 C160,185 200,195 240,148 C280,100 320,110 360,130 C400,150 450,155 500,145 C540,135 580,85 600,60
+                           L600,270 L0,270 Z"
+                        fill="url(#blueFill)" />
+                  <path d="M0,175 C40,168 80,155 120,170 C160,185 200,195 240,148 C280,100 320,110 360,130 C400,150 450,155 500,145 C540,135 580,85 600,60"
+                        fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                </svg>
+              </div>
+
+              <!-- X axis labels -->
+              <div class="chart-xaxis">
+                <span>Jan '23</span>
+                <span>Feb '23</span>
+                <span>Mar '23</span>
+                <span>Apr '23</span>
+                <span>May '23</span>
+                <span>Jun '23</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Chat -->
+        <div class="direct-chat-card">
+          <div class="direct-chat-header">
+            <span class="title">Direct Chat</span>
+            <div class="chat-header-tools">
+              <span class="chat-badge">3</span>
+              <span class="chat-tool-icon">&#8722;</span>
+              <span class="chat-tool-icon">&#128196;</span>
+              <span class="chat-tool-icon">&#10005;</span>
+            </div>
+          </div>
+
+          <!-- Messages -->
+          <div class="chat-messages">
+
+            <div class="chat-msg-time">23 Jan 2:05 pm</div>
+            <div class="chat-msg-row right">
+              <div class="chat-msg-col right">
+                <div class="chat-sender-name" style="text-align:right;">Sarah Bullock</div>
+                <div class="chat-bubble blue">You better believe it!</div>
+              </div>
+              <div class="chat-avatar sarah">SB</div>
+            </div>
+
+            <div class="chat-msg-time">Alexander Pierce &nbsp;&nbsp;&nbsp; 23 Jan 5:37 pm</div>
+            <div class="chat-msg-row">
+              <div class="chat-avatar">AP</div>
+              <div class="chat-msg-col">
+                <div class="chat-bubble dark">Working with AdminLTE on a great new app! Wanna join?</div>
+              </div>
+            </div>
+
+            <div class="chat-msg-time">23 Jan 6:10 pm</div>
+            <div class="chat-msg-row right">
+              <div class="chat-msg-col right">
+                <div class="chat-sender-name" style="text-align:right;">Sarah Bullock</div>
+                <div class="chat-bubble blue">I would love to.</div>
+              </div>
+              <div class="chat-avatar sarah">SB</div>
+            </div>
+
+          </div>
+
+          <!-- Input -->
+          <div class="chat-input-area">
+            <input class="chat-input" type="text" placeholder="Type Message ..." readonly />
+            <button class="chat-send-btn">Send</button>
+          </div>
+        </div>
+      </div><!-- /bottom-left -->
+
+      <!-- Right: Sales Map Card -->
+      <div class="bottom-right">
+        <div class="sales-map-card">
+          <div class="sales-map-header">
+            <span class="title">Sales Value</span>
+            <span class="minus-btn">&#8722;</span>
+          </div>
+
+          <div class="map-wrapper">
+            <div class="map-zoom-btns">
+              <div class="map-zoom-btn">+</div>
+              <div class="map-zoom-btn">&#8722;</div>
+            </div>
+            <!-- World map image (public domain SVG embedded inline as img src) -->
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+              alt="World Map"
+            />
+            <div class="map-tooltip">Canada</div>
+          </div>
+
+          <!-- Sparklines -->
+          <div class="sparklines-row">
+            <div class="sparkline-item">
+              <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="0,35 13,28 26,32 39,18 52,25 65,15 80,20"
+                  fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+              </svg>
+              <div class="sparkline-label">Visitors</div>
+            </div>
+            <div class="sparkline-item">
+              <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="0,30 13,35 26,20 39,28 52,10 65,22 80,15"
+                  fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+              </svg>
+              <div class="sparkline-label">Online</div>
+            </div>
+            <div class="sparkline-item">
+              <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="0,25 13,30 26,18 39,32 52,12 65,28 80,10"
+                  fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+              </svg>
+              <div class="sparkline-label">Sales</div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /bottom-right -->
+
+    </div><!-- /bottom-section -->
+  </div><!-- /page-content -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    Copyright &copy; 2014–2026 &nbsp;<a href="#">AdminLTE.io</a>. All rights reserved.
+  </footer>
+
+</div><!-- /main-wrapper -->
+
+</body>
+</html>

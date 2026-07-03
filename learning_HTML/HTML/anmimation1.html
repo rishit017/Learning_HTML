@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendulum Animation</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#1b1b1b;
+}
+
+/* Stand */
+
+.stand{
+    position:relative;
+    width:300px;
+    height:350px;
+}
+
+/* Top Bar */
+
+.bar{
+    width:220px;
+    height:10px;
+    background:white;
+    margin:auto;
+}
+
+/* Rope */
+
+.rope{
+    width:4px;
+    height:180px;
+    background:white;
+
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+
+    transform-origin:top center;
+
+    animation:swing 2s ease-in-out infinite;
+}
+
+/* Bob */
+
+.ball{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:crimson;
+
+    position:absolute;
+    bottom:-22px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+@keyframes swing{
+
+    0%{
+        transform:translateX(-50%) rotate(-35deg);
+    }
+
+    50%{
+        transform:translateX(-50%) rotate(35deg);
+    }
+
+    100%{
+        transform:translateX(-50%) rotate(-35deg);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stand">
+
+    <div class="bar"></div>
+
+    <div class="rope">
+        <div class="ball"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

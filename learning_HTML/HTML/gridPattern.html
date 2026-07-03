@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Alignment</title>
+
+<style>
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.grid{
+    width:800px;
+    height:500px;
+    background-color: rgb(220, 248, 220);
+
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    grid-template-rows:1fr 2fr 1fr;
+
+    border:2px solid black;
+}
+
+.cell{
+    border:2px solid #000000;
+    display:grid;
+}
+
+.box{
+    width:50px;
+    height:50px;
+    background:rgb(24, 103, 13);
+}
+
+/* Row 1 */
+.c1 .box{
+    justify-self:end;
+    align-self:end;
+}
+
+.c2 .box{
+    justify-self:center;
+    align-self:center;
+}
+
+.c3 .box{
+    justify-self:start;
+    align-self:end;
+}
+
+/* Row 2 */
+.c4 .box{
+    justify-self:start;
+    align-self:start;
+}
+
+.c5 .box{
+    justify-self:center;
+    align-self:end;
+}
+
+.c6 .box{
+    justify-self:end;
+    align-self:start;
+}
+
+/* Row 3 */
+.c7 .box{
+    justify-self:end;
+    align-self:center;
+}
+
+.c8 .box{
+    justify-self:start;
+    align-self:center;
+}
+
+.c9 .box{
+    justify-self:start;
+    align-self:center;
+}
+</style>
+</head>
+<body>
+
+<div class="grid">
+    <div class="cell c1"><div class="box"></div></div>
+    <div class="cell c2"><div class="box"></div></div>
+    <div class="cell c3"><div class="box"></div></div>
+
+    <div class="cell c4"><div class="box"></div></div>
+    <div class="cell c5"><div class="box"></div></div>
+    <div class="cell c6"><div class="box"></div></div>
+
+    <div class="cell c7"><div class="box"></div></div>
+    <div class="cell c8"><div class="box"></div></div>
+    <div class="cell c9"><div class="box"></div></div>
+</div>
+
+</body>
+</html>

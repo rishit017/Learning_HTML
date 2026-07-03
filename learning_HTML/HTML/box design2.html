@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Design</title>
+
+    <style>
+
+        .parent{
+            height: 250px;
+            width: 700px;
+
+            background-color: black;
+
+            padding: 10px;
+
+            box-sizing: border-box;
+        }
+
+        /* TOP FULL BLOCK */
+
+        .top{
+            height: 110px;
+
+            background-color: red;
+
+            display: flex;
+
+            justify-content: space-around;
+
+            align-items: center;
+        }
+
+        /* YELLOW SQUARES */
+
+        .square{
+            height: 80px;
+            width: 80px;
+
+            background-color: yellow;
+        }
+
+        /* BOTTOM ROW */
+
+        .bottom{
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+        /* BIG LEFT BOX */
+
+        .child1{
+            height: 110px;
+            width: 450px;
+
+            background-color: red;
+        }
+
+        /* SMALL RIGHT BOX */
+
+        .child2{
+            height: 110px;
+            width: 220px;
+
+            background-color: red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="parent">
+
+        <!-- TOP BLOCK -->
+
+        <div class="top">
+
+            <div class="square"></div>
+
+            <div class="square"></div>
+
+            <div class="square"></div>
+
+            <div class="square"></div>
+
+        </div>
+
+        <!-- BOTTOM ROW -->
+
+        <div class="bottom">
+
+            <div class="child1"></div>
+
+            <div class="child2"></div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

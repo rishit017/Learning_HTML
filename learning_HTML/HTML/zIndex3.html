@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boxtop{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            position: relative;
+            left: 500px;
+            z-index: 3;
+            display: inline-block;
+        }
+        .boxright{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(255, 0, 0);
+            position: relative;
+            top: 75px;
+            left: 470px;
+            z-index: 2;
+            display: inline-block;
+        }
+        .boxleft{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(0, 255, 34);
+            position: relative;
+            top: 75px;
+            left: 225px;
+            z-index: 2;
+            display: inline-block;
+        }
+        .boxbottom{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(251, 0, 255);
+            position: relative;
+            top: 150px;
+            left: 190px;
+            z-index: 1;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <div class = boxtop></div>
+        <div class = boxright></div>
+        <div class = boxleft></div>
+        <div class = boxbottom></div>
+    </div>
+    
+</body>
+</html>

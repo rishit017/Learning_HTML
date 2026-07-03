@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("gradient4.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+    }
+        .navBar{
+            display: flex;
+            justify-content:  space-evenly;
+            height: 75px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.407);
+            align-items: center;
+            border-radius: 10px;
+            
+        }
+        .logo{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background-color: rgb(252, 197, 0);
+        }   
+        .search{
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 8px;
+            height: 50px;
+            width: 500px;
+            border-radius: 30px;
+            background-color: rgb(252, 197, 0);
+            
+        }   
+        .button{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: rgb(137, 108, 0);
+        }   
+        ul{
+            display: flex;
+            gap: 60px;
+            list-style: none;
+            font-family: Rage;
+            color: rgb(252, 197, 0);
+            font-size:x-large;
+        }
+    </style>
+</head>
+<body>
+    <div class = "navBar">
+        <div class = "logo"></div>
+        <ul class = "list">
+            <li>Home</li>
+            <li>About</li>
+            <li>Support</li>
+        </ul>
+        <div class = "search"> <input type="text" placeholder="Search...">
+            <div class = "button"></div>
+            <div class = "box"></div>
+        </div>
+    </div>
+
+</body>
+</html>

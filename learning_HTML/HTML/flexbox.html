@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flexcontainer{
+            height: 500px;
+            width: 500px;
+            background-color: rgb(116, 152, 242);
+            border: solid 2x black;
+
+
+            display: flex;
+
+            /* this changes the main axis to the verticle axis */
+            flex-direction: column; 
+
+            /* this alligns the box right to left */
+            flex-direction: row-reverse;
+            
+            /* this alligns the box bottom to top */
+            flex-direction: column-reverse;
+
+            
+            justify-content: flex-end;
+            justify-content: center;
+
+            /* gives same space to each block around it - note here if 2 blocks are there so btwn them there will be twice space in this case*/
+            justify-content: space-around;  
+
+            /* gives equal space to each block */
+            justify-content: space-evenly;
+
+            /* gives equal space end to end */
+            justify-content: space-between;
+
+            /* allows to move in next row if first one is filled (fills from top) */
+            flex-wrap: wrap; 
+            
+            /* allows to move in next row if first one is filled (fills from bottom) */
+            flex-wrap: wrap-reverse;
+
+
+            /* NOTE justify-content WORKS FOR MAIN AXIS;
+            NOTE align-items  WORKS FOR MAIN AXIS; */
+        }
+        .box1{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(75, 198, 66);
+        }
+        .box2{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(179, 52, 52);
+        }
+        .box3{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(145, 126, 212);
+        }
+        .box4{
+            height: 100px;
+            width: 100px;
+            background-color: rgb(132, 61, 61);s
+        }
+    </style>
+</head>
+<body>
+    <div class = "flexcontainer">
+        <div class = "box1"></div>
+        <div class = "box2"></div>
+        <div class = "box3"></div>
+        <div class = "box4"></div>
+    </div>
+</body>
+</html>
