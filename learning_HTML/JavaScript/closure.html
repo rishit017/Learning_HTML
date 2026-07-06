@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        //the variable1 has its scope inside the func vendingMachine and generally dies outside the function
+        //but still we are able to access the varuable1 outside the function
+
+        // so instead of returning a variable or a string we are returning a function
+        // due to this the variable1 can be acesed outside the function and dosent dies
+        // this second function is called callback function
+        function vendingMachine(){
+            let variable1 = "Pankha chal gya";
+            return function(){  //function inside a function 
+                console.log(variable1);
+            }
+        }
+        let pankha = vendingMachine();
+        pankha();
+
+    </script>
+</body>
+</html>

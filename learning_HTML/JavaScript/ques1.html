@@ -441,7 +441,67 @@ let junior_employees = [
     });
 
 //QUES 3. Concatinate the cart of all juniors of IT department and then return the most expensive item
+    let IT_Dept = departments.find(d => d.Dname == "IT").Dcode;
+    let cart = [];
+    employees.forEach(emp => {
+        if (emp.department == IT_Dept) {
+                emp.junior_assigned.forEach(id => {
+                    let junior = junior_employees.find(j => j.employee_id == id);
+                    cart = cart.concat(junior.products_in_cart);
+                });
+            }
+    });
+    console.log(cart);
+
+    let expensive = cart[0];
+    cart.forEach(item => {
+        if (item.cost > expensive.cost) {
+            expensive = item;
+        }
+    });
+    console.log("Most Expensive Product:", expensive);
+
+//QUES 4. for each department - print the salary for employee and junior employee
+    //Every department senior and junior salary
+    departments.forEach(dept => {
+    let seniorSalary = 0;
+    let juniorSalary = 0;
+
+    // Total salary of senior employees
+    employees.forEach(emp => {
+        if (emp.department == dept.Dcode) {
+            seniorSalary += emp.salary;
+        }
+    });
+
+    // Total salary of junior employees
+    junior_employees.forEach(junior => {
+        if (junior.department == dept.Dcode) {
+            juniorSalary += junior.salary;
+        }
+    });
+
+    console.log("Department:", dept.Dname);
+    console.log("Senior Salary:", seniorSalary);
+    console.log("Junior Salary:", juniorSalary);
+    console.log("");
+});
+//QUES 5 print a single array for all the interest category of employee and junior employee
+    let allInterests = [];
+
+
     
+    // Seniors' interests
+    employees.forEach(emp => {
+        allInterests = allInterests.concat(emp.interests);
+    });
+
+    // Juniors' interests
+    junior_employees.forEach(junior => {
+        allInterests = allInterests.concat(junior.interests);
+    });
+
+    console.log(allInterests);
     </script>
 </body>
 </html>
