@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //object declaration
+        let employee = {
+            name: "Rishit",
+            rno: 65,
+            city: "Nadiad"
+        };
+
+        let employee_json = JSON.stringify(employee); //converts the object to text as we need to convert all the data to string first
+        console.log(employee_json);
+        
+        let employee_obj = JSON.parse(employee_json); // does opposite
+        console.log(employee_obj);
+
+
+    </script>
+</body>
+</html>
