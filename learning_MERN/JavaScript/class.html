@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class person{
+
+            constructor(name, age, city, pincode){
+                this.name = name;
+                this.age = age;
+                this.address = {
+                    city1: city,
+                    pc: pincode
+                };
+            }
+        }
+        let aadmi = new person("Rishit", 20, "Snp", 131001);
+        let dusra_aadmi = new person("Rishabh", 21, "Snp", 131001);
+        console.log(aadmi);
+        console.log(dusra_aadmi);
+
+
+
+
+
+
+        class Car{
+
+            constructor(company, modelYr, model, tyres, features){
+                this.comapany = company;
+                this.modeYr = modelYr;
+                this.model = model;
+                this.tyres = tyres;
+                this.features = features;
+            }
+        }
+        let tyres = {
+            tyre1: 20,
+            tyre2: 40,
+            tyre3: 60,
+            tyre4: 80
+        };
+        let features = ["Opening gates", "Rolling tyres", "Working engine"];
+        let nyi_car = new Car("BMW", 2020, "320d", tyres, features);
+        console.log(nyi_car);
+
+
+
+
+
+        class Employee{
+
+            constructor(name, salary, skills, cart){
+                this.name = name;
+                this.salary = salary;
+                this.skills = skills;
+                this.cart = cart;
+            }
+        }
+        let skills = ["Python","Node","Numpy"];
+        let cart = {
+            fan: 500,
+            watch: 1000
+        };
+        let new_Employee = new Employee("Rishit", "12Lpa", skills, cart);
+        console.log(new_Employee);
+
+
+
+
+
+        
+
+        
+    </script>
+</body>
+</html>

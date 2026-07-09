@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class Animal{
+            bark(){
+                console.log("Bhau");
+            }
+        }
+        class Dog extends Animal{   //"Dog inherits everything from Animal."
+            miau(){
+                console.log("miiieeeaaauuuuuuuuuuu");
+            }
+        }
+        let d = new Dog();  //object of Dog class
+        d.bark();
+        let a = new Animal();
+        a.miau();
+
+    </script>
+</body>
+</html>

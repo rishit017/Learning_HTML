@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let person  = {
+            name: "Rishit",
+            age: 20,
+            phNo: 9911122299,
+            email: "abc@gmail.com"
+        };
+
+        let address = {
+            city: "Nadiad",
+            city_pin_code: 131001,
+            district: "Kheda"
+        };
+
+        let employment = {
+            company: "Google",
+            package: 120000000,
+            designation: "SDE1"
+        };
+
+        //now apply prototype chaining
+
+        // -- note: never use it
+         
+        person.__proto__ = address;
+        console.log(person.city);
+        console.log(person.city_pin_code);
+        console.log(person.district);
+
+        person.__proto__.__proto__ = employment;
+        console.log(person.company);
+        console.log(person.package);
+        console.log(person.designation);
+        
+
+
+
+
+        // Object.setPrototypeOf(employee, address);
+        // Object.setPrototypeOf(address, employment);
+
+        // // Accessing properties
+        // console.log(employee.name);          
+        // console.log(employee.city);
+        // console.log(employee.district);      
+        // console.log(employee.company);       
+        // console.log(employee.package);       
+        // console.log(employee.designation);   
+
+
+    </script>
+</body>
+</html>
