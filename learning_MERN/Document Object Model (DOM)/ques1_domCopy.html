@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .navBody {
+            
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 235px 1fr;
+            grid-template-rows: 60px 1fr;
+        }
+            
+            
+        
+        .logo {
+            background-color:#343a40;
+            height: 60px;
+            width: 235px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            border-bottom: 2px solid #dee2e6;
+
+        }
+        .lo{
+            height: 40px;
+            width: 40px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: -4px;
+            display: flex;
+            align-items: center;
+        }
+        .name{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #dee2e6;
+            margin-left: 10px;
+            line-height: 1.5;
+
+        }
+        .navBar{
+            
+            height: 60px;
+            width: 100%;
+            background-color: #343a40;
+            grid-column: 2 / 3;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .nav-left{
+            display: flex;
+            gap: 40px;
+            margin-left: 20px;
+        }
+        .nav-left a,i{
+            color:#dee2e6;
+            text-decoration:none;
+            display: flex;
+            align-items: center;
+        }
+        .nav-righr{
+            margin-left: auto;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: end;
+            gap: 40px;
+        }
+        .nav-right a,nav-right i{
+            color:#dee2e6;
+            text-decoration:none;
+            display: flex;
+            align-items: center;
+        }
+        .pe{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            color:white;
+        }
+
+        .pe::before{
+            content:"";
+            width:30px;
+            height:30px;
+            border-radius:50%;
+            background:#6c757d;
+            display:block;
+        }
+        .leftmenu{
+            background-color: #343a40;
+            color: white;
+            width: 235px;
+            grid-row: 2 / 3;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            
+           
+        }
+        .leftmenu{
+            overflow-y: auto;
+        }
+        .leftmenu a{
+        color:#dee2e6;
+        text-decoration:none;
+        padding:10px;
+        margin-bottom:5px;
+        border-radius:5px;
+        transition:.3s;
+    }
+
+        .leftmenu a:hover{
+            background:#007bff;
+        }
+        .view{
+            height: 40px;
+            width: 235px;
+        
+            border-top: 1px solid #dee2e6;
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            padding: 20px;
+            margin: 0 0 0 -19px;
+        }
+        .doc{
+            height:35px;
+            width:175px;
+            border:1px solid #6c757d;
+            border-radius:5px;
+            display:flex;
+            align-items:center;
+            padding-left:10px;
+        }
+
+        .doc a{
+            color:rgb(167,172,177);
+            text-decoration:none;
+        }
+
+        .doc i{
+            margin-right:8px;
+        }
+        .main{
+    grid-column:2/3;
+    grid-row:2/3;
+    background:#2b3035;
+    padding:20px;
+    overflow:auto;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    color:white;
+    margin-bottom:20px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.small-box{
+    height:150px;
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    color:white;
+    padding:20px;
+}
+
+.small-box h2{
+    font-size:42px;
+    font-weight:bold;
+}
+
+.small-box i{
+    position:absolute;
+    right:20px;
+    top:20px;
+    font-size:60px;
+    opacity:.3;
+}
+
+.more{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    background:rgba(0,0,0,.15);
+    padding:8px;
+}
+
+.blue{background:#0d6efd;}
+.green{background:#198754;}
+.red{background:#dc3545;}
+.orange{background:#fd7e14;}
+
+.bottom-section{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.sales-card,
+.visitor-card{
+    background:#1d1f20;
+    border-radius:8px;
+    padding:20px;
+    color:white;
+}
+
+.chart{
+    height:300px;
+    border-top:1px solid #666;
+    border-bottom:1px solid #666;
+    margin-top:20px;
+    position:relative;
+}
+
+.line1{
+    position:absolute;
+    width:100%;
+    height:3px;
+    background:#0d6efd;
+    top:50%;
+    border-radius:50%;
+}
+
+.line2{
+    position:absolute;
+    width:100%;
+    height:3px;
+    background:#20c997;
+    top:30%;
+    border-radius:50%;
+}
+
+.map{
+    height:250px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:120px;
+    background-image:url('https://thumbs.dreamstime.com/b/vector-white-world-map-isolated-blue-background-detailed-illustration-clear-outlines-educational-design-purposes-442922483.jpg');
+    background-size:fill;
+}
+
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid white;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#444;
+    color:white;
+}
+
+td{
+    background:#2b3035;
+    color:white;
+}
+            </style>
+            
+    </head>
+    <body>
+        <div class="navBody">
+            <div class="logo">
+                <div class="lo"></div>
+                <div class="name">AdmineLte</div>
+            </div>
+            <div class="navBar">
+                <div class="nav-left">
+                <a href="#">☰</a>
+                <a href="#"><i class="bi bi-grid"></i> Live Preview</a>
+                <a href="#">
+                <i class="bi bi-book"></i>
+                Documentation
+                </a>
+                
+                
+                </div>
+                <div class="nav-righr">
+                    <a href="#"><i class="bi bi-search"></i></a>
+                    <a href="#"><i class="bi bi-chat-text"></i></a>
+                    <a href="#"><i class="bi bi-bell"></i></a>
+                    <a href="#"><i class="bi bi-arrows-fullscreen"></i></a>
+                    <a href="#"><i class="bi bi-moon"></i></a>
+                    <div class="pe">Alexander Pierce
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="leftmenu">
+               <a href="#">🏠 Dashboard</a>
+            <a href="#">🎨 Theme Generator</a>
+            <a href="#">🧩 Widgets</a>
+            <a href="#">📐 Layout Options</a>
+            <a href="#">📊 Charts</a>
+            <a href="#">💎 UI Elements</a>
+            <a href="#">📩 Mailbox</a>
+            <a href="#">📝 Forms</a>
+            <a href="#">📋 Tables</a>
+
+            <h8>PAGES</h8>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            <a href="#">Profile</a>
+
+            <h8>EXAMPLES</h8>
+            <a href="#">Example 1</a>
+            <a href="#">Example 2</a>
+
+            <h8>MULTILEVEL</h8>
+            <a href="#">Level 1</a>
+            <a href="#">Level 2</a>
+            <a href="#">Level 3</a>
+
+            <h8>LABELS</h8>
+            <a href="#">🔴 Important</a>
+            <a href="#">🟡 Warning</a>
+            <a href="#">🔵 Information</a>
+            <div class="view">
+            <div class="doc">
+                <a href="#">
+                    <i class="bi bi-book"></i>
+                    Documentation
+                </a>
+            </div>
+            </div>
+              
+             
+            
+           
+            
+          
+            
+          
+        </div>
+               <div class="main">
+
+    <div class="header">
+        <h3>Dashboard</h3>
+        <p>Home / Dashboard</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="small-box blue">
+            <h2>150</h2>
+            <p>New Orders</p>
+            <i class="bi bi-cart-fill"></i>
+            <div class="more">
+            More info🔗
+            
+            </div>
+        </div>
+
+        <div class="small-box green">
+    <h2 id="gstCollection">₹0</h2>
+    <p>GST Collection</p>
+    <i class="bi bi-cash-stack"></i>
+    <div class="more">
+        More info🔗
+    </div>
+</div>
+
+        <div class="small-box red">
+            <h2>44</h2>
+            <p>User Registrations</p>
+            <i class="bi bi-person-plus-fill"></i>
+            <div class="more">
+            More info🔗
+            
+            </div>
+        </div>
+
+        <div class="small-box orange">
+            <h2>65</h2>
+            <p>Unique Visitors</p>
+            <i class="bi bi-pie-chart-fill"></i>
+            <div class="more">
+            More info🔗
+           
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-section">
+
+        <div class="sales-card">
+            <h4>Sales Value</h4>
+
+            <div class="chart">
+                <div class="line1"></div>
+                <div class="line2"></div>
+            </div>
+        </div>
+
+        <div class="visitor-card">
+            <h4>Sales Value</h4>
+
+            <div class="map">
+               
+            </div>
+
+            
+        </div>
+
+    </div>
+
+</div>
+
+    <script>
+let departments = [
+    { Dname: "IT", Dcode: 58 },
+    { Dname: "Finance", Dcode: 158 },
+    { Dname: "HR", Dcode: 48 },
+    { Dname: "Marketing", Dcode: 44 },
+    { Dname: "CEO", Dcode: 2 }
+];
+
+let employees = [
+{
+    employee_id: "EMP101",
+    name: "rohan",
+    salary: 5000,
+    age: 14,
+    country: "london",
+    department: 158,
+    interests: [
+        { vlogs: ["daily_vlogs"] },
+        { learning: ["science"] },
+        { creativity: ["art"] },
+        { self_growth: ["motivational"] }
+    ],
+    junior_assigned: ["JEMP201","JEMP202"],
+    products_in_cart: [
+        { Pname: "Shirt", cost: 500 },
+        { Pname: "Headphones", cost: 1800 }
+    ]
+},
+{
+    employee_id: "EMP102",
+    name: "bhupendr",
+    salary: 7000,
+    age: 50,
+    country: "india",
+    department: 58,
+    interests: [
+        { food: ["food"] },
+        { vlogs: ["travel_vlogs"] },
+        { creativity: ["art"] },
+        { storytelling: ["storytelling"] }
+    ],
+    junior_assigned: ["JEMP203"],
+    products_in_cart: [
+        { Pname: "Shirt", cost: 500 },
+        { Pname: "Shoes", cost: 2500 },
+        { Pname: "Watch", cost: 3500 }
+    ]
+},
+{
+    employee_id: "EMP103",
+    name: "kartik",
+    salary: 300,
+    age: 2,
+    country: "america",
+    department: 48,
+    interests: [
+        { sports: ["sports"] },
+        { news: ["politics"] },
+        { gaming: ["online_gaming"] },
+        { learning: ["science"] }
+    ],
+    junior_assigned: ["JEMP204","JEMP205"],
+    products_in_cart: [
+        { Pname: "Football", cost: 1200 },
+        { Pname: "Shoes", cost: 2500 }
+    ]
+},
+{
+    employee_id: "EMP104",
+    name: "suraj",
+    salary: 200,
+    age: 19,
+    country: "russia",
+    department: 158,
+    interests: [
+        { vlogs: ["travel_vlogs"] },
+        { vehicles: ["bike"] },
+        { news: ["politics"] },
+        { food: ["food"] }
+    ],
+    junior_assigned: ["JEMP206"],
+    products_in_cart: [
+        { Pname: "Bike Helmet", cost: 2200 },
+        { Pname: "Watch", cost: 3500 }
+    ]
+},
+{
+    employee_id: "EMP105",
+    name: "aryan",
+    salary: 100,
+    age: 70,
+    country: "japan",
+    department: 48,
+    interests: [
+        { history: ["history"] },
+        { self_growth: ["motivational"] },
+        { news: ["news"] },
+        { learning: ["science"] }
+    ],
+    junior_assigned: ["JEMP207","JEMP208","JEMP209"],
+    products_in_cart: [
+        { Pname: "Books", cost: 900 },
+        { Pname: "Laptop", cost: 65000 }
+    ]
+},
+{
+    employee_id: "EMP106",
+    name: "aryan",
+    salary: 8800,
+    age: 40,
+    country: "japan",
+    department: 58,
+    interests: [
+        { coding: ["coding"] },
+        { technology: ["technology"] },
+        { learning: ["science"] },
+        { creativity: ["art"] }
+    ],
+    junior_assigned: ["JEMP210"],
+    products_in_cart: [
+        { Pname: "Laptop", cost: 65000 },
+        { Pname: "Mouse", cost: 700 },
+        { Pname: "Keyboard", cost: 1500 }
+    ]
+},
+{
+    employee_id: "EMP107",
+    name: "jatin",
+    salary: 10000,
+    age: 12,
+    country: "russia",
+    department: 48,
+    interests: [
+        { gaming: ["gaming","online_gaming"] },
+        { sports: ["sports"] },
+        { anime: ["anime"] }
+    ],
+    junior_assigned: ["JEMP211","JEMP212"],
+    products_in_cart: [
+        { Pname: "Gaming Mouse", cost: 2200 },
+        { Pname: "Headphones", cost: 1800 }
+    ]
+},
+{
+    employee_id: "EMP108",
+    name: "aaditya",
+    salary: 2000,
+    age: 19,
+    country: "india",
+    department: 44,
+    interests: [
+        { business: ["marketing","business"] },
+        { self_growth: ["motivational"] },
+        { storytelling: ["storytelling"] }
+    ],
+    junior_assigned: ["JEMP213"],
+    products_in_cart: [
+        { Pname: "Notebook", cost: 150 },
+        { Pname: "Pen", cost: 50 },
+        { Pname: "Shirt", cost: 500 }
+    ]
+},
+{
+    employee_id: "EMP109",
+    name: "sachi",
+    salary: 100,
+    age: 2,
+    country: "uganda",
+    department: 158,
+    interests: [
+        { fun: ["cartoons"] },
+        { food: ["food"] },
+        { learning: ["science"] },
+        { vlogs: ["daily_vlogs"] }
+    ],
+    junior_assigned: ["JEMP214"],
+    products_in_cart: [
+        { Pname: "Chocolate", cost: 100 },
+        { Pname: "Books", cost: 900 }
+    ]
+},
+{
+    employee_id: "EMP110",
+    name: "khushi",
+    salary: 3500,
+    age: 99,
+    country: "brazil",
+    department: 58,
+    interests: [
+        { vlogs: ["travel_vlogs"] },
+        { dance: ["dance"] },
+        { food: ["food"] },
+        { creativity: ["art"] }
+    ],
+    junior_assigned: ["JEMP215","JEMP216"],
+    products_in_cart: [
+        { Pname: "Dress", cost: 1800 },
+        { Pname: "Watch", cost: 3500 },
+        { Pname: "Shoes", cost: 2500 }
+    ]
+},
+{
+    employee_id: "EMP111",
+    name: "parul",
+    salary: 50000,
+    age: 34,
+    country: "jamaica",
+    department: 2,
+    interests: [
+        { leadership: ["leadership"] },
+        { business: ["business"] },
+        { technology: ["technology"] },
+        { self_growth: ["motivational"] }
+    ],
+    junior_assigned: ["JEMP217","JEMP218","JEMP219"],
+    products_in_cart: [
+        { Pname: "Laptop", cost: 65000 },
+        { Pname: "Watch", cost: 3500 },
+        { Pname: "Phone", cost: 45000 }
+    ]
+}];
+
+let junior_employees = [
+{
+    employee_id:"JEMP201",
+    name:"rahul",
+    salary:1800,
+    age:21,
+    country:"india",
+    department:158,
+    interests:[{vlogs:["travel_vlogs"]},{learning:["science"]}],
+    products_in_cart:[{Pname:"Bag",cost:900}]
+},
+{
+    employee_id:"JEMP202",
+    name:"neha",
+    salary:2000,
+    age:22,
+    country:"india",
+    department:158,
+    interests:[{food:["food"]},{creativity:["art"]}],
+    products_in_cart:[{Pname:"Shoes",cost:1500}]
+},
+{
+    employee_id:"JEMP203",
+    name:"aman",
+    salary:2200,
+    age:24,
+    country:"india",
+    department:58,
+    interests:[{coding:["coding"]},{technology:["technology"]}],
+    products_in_cart:[{Pname:"Keyboard",cost:1200}]
+},
+{
+    employee_id:"JEMP204",
+    name:"riya",
+    salary:1700,
+    age:20,
+    country:"india",
+    department:48,
+    interests:[{gaming:["online_gaming"]}],
+    products_in_cart:[{Pname:"Football",cost:900}]
+},
+{
+    employee_id:"JEMP205",
+    name:"vivek",
+    salary:2100,
+    age:23,
+    country:"india",
+    department:48,
+    interests:[{sports:["sports"]}],
+    products_in_cart:[{Pname:"Shoes",cost:1800}]
+},
+{
+    employee_id:"JEMP206",
+    name:"karan",
+    salary:2300,
+    age:24,
+    country:"russia",
+    department:158,
+    interests:[{vehicles:["bike"]}],
+    products_in_cart:[{Pname:"Helmet",cost:1200}]
+},
+{
+    employee_id:"JEMP207",
+    name:"simran",
+    salary:2500,
+    age:22,
+    country:"japan",
+    department:48,
+    interests:[{history:["history"]}],
+    products_in_cart:[{Pname:"Books",cost:700}]
+},
+{
+    employee_id:"JEMP208",
+    name:"mohit",
+    salary:2400,
+    age:23,
+    country:"india",
+    department:48,
+    interests:[{learning:["science"]}],
+    products_in_cart:[{Pname:"Notebook",cost:150}]
+},
+{
+    employee_id:"JEMP209",
+    name:"anjali",
+    salary:2600,
+    age:22,
+    country:"india",
+    department:48,
+    interests:[{self_growth:["motivational"]}],
+    products_in_cart:[{Pname:"Watch",cost:2000}]
+},
+{
+    employee_id:"JEMP210",
+    name:"rohit",
+    salary:2800,
+    age:25,
+    country:"india",
+    department:58,
+    interests:[{coding:["coding"]}],
+    products_in_cart:[{Pname:"Mouse",cost:800}]
+},
+{
+    employee_id:"JEMP211",
+    name:"deep",
+    salary:1800,
+    age:21,
+    country:"india",
+    department:48,
+    interests:[{gaming:["gaming"]}],
+    products_in_cart:[{Pname:"Headphones",cost:1800}]
+},
+{
+    employee_id:"JEMP212",
+    name:"priya",
+    salary:1900,
+    age:21,
+    country:"india",
+    department:48,
+    interests:[{anime:["anime"]}],
+    products_in_cart:[{Pname:"Books",cost:500}]
+},
+{
+    employee_id:"JEMP213",
+    name:"harsh",
+    salary:2000,
+    age:23,
+    country:"india",
+    department:44,
+    interests:[{business:["marketing"]}],
+    products_in_cart:[{Pname:"Notebook",cost:200}]
+},
+{
+    employee_id:"JEMP214",
+    name:"isha",
+    salary:1700,
+    age:20,
+    country:"uganda",
+    department:158,
+    interests:[{fun:["cartoons"]}],
+    products_in_cart:[{Pname:"Chocolate",cost:100}]
+},
+{
+    employee_id:"JEMP215",
+    name:"nikhil",
+    salary:2100,
+    age:24,
+    country:"brazil",
+    department:58,
+    interests:[{dance:["dance"]}],
+    products_in_cart:[{Pname:"Shoes",cost:1700}]
+},
+{
+    employee_id:"JEMP216",
+    name:"megha",
+    salary:2200,
+    age:23,
+    country:"brazil",
+    department:58,
+    interests:[{food:["food"]}],
+    products_in_cart:[{Pname:"Dress",cost:1800}]
+},
+{
+    employee_id:"JEMP217",
+    name:"abhishek",
+    salary:3000,
+    age:26,
+    country:"jamaica",
+    department:2,
+    interests:[{leadership:["leadership"]}],
+    products_in_cart:[{Pname:"Laptop Bag",cost:2000}]
+},
+{
+    employee_id:"JEMP218",
+    name:"kiran",
+    salary:3200,
+    age:27,
+    country:"jamaica",
+    department:2,
+    interests:[{business:["business"]}],
+    products_in_cart:[{Pname:"Phone",cost:25000}]
+},
+{
+    employee_id:"JEMP219",
+    name:"sonia",
+    salary:3100,
+    age:25,
+    country:"jamaica",
+    department:2,
+    interests:[{technology:["technology"]}],
+    products_in_cart:[{Pname:"Watch",cost:3000}]
+}
+];
+
+    //New Orders
+    let totalProducts = 0;
+    // Count employee products
+    employees.forEach(employee => {
+    totalProducts += employee.products_in_cart.length;
+    });
+    // Count junior employee products
+    junior_employees.forEach(junior => {
+    totalProducts += junior.products_in_cart.length;
+    });
+
+    const order = document.querySelector(".small-box.blue h2");
+    order.textContent = totalProducts;
+    
+    console.log("Total number of products in cart: "+totalProducts);
+    
+
+
+//Total Registrations
+let totalRegistrations = employees.length + junior_employees.length;
+
+const registrationBox = document.querySelector(".small-box.red h2");
+registrationBox.textContent = totalRegistrations;  
+
+
+
+//GST Values
+let totalGST = 0;
+// GST from employees
+employees.forEach(employee => {
+    employee.products_in_cart.forEach(product => {
+        totalGST += product.cost * 0.18;   // 18% GST
+    });
+});
+
+// GST from junior employees
+junior_employees.forEach(junior => {
+    junior.products_in_cart.forEach(product => {
+        totalGST += product.cost * 0.18;   // 18% GST
+    });
+});
+
+// Update dashboard
+document.getElementById("gstCollection").textContent =
+"₹" + totalGST.toFixed(2);
+
+
+
+//Bottom Tables
+
+document.querySelector(".chart").remove();
+document.querySelector(".map").remove();
+
+
+const Seniors=document.querySelector('.sales-card');
+    const h4=Seniors.querySelector('h4');
+    h4.innerHTML="Seniors_Employees";
+    
+
+    const Juniors=document.querySelector('.visitor-card');
+    const h4J=Juniors.querySelector('h4');
+    h4J.innerHTML="Juniors_Employees";
+    
+
+
+
+    const seniorTable = document.createElement("table");
+//    seniorTable.className = "table table-dark table-bordered";
+    seniorTable.className = "";
+
+    seniorTable.innerHTML = `
+    <tr>
+        <th>Employee Name</th>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    `;
+
+    employees.forEach(employee => {
+
+        employee.products_in_cart.forEach(product => {
+
+            seniorTable.innerHTML += `
+            <tr>
+                <td>${employee.name}</td>
+                <td>${product.Pname}</td>
+                <td>${product.cost}</td>
+            </tr>
+            `;
+
+        });
+
+    });
+
+    document.querySelector(".sales-card").appendChild(seniorTable);
+
+
+    const juniorTable = document.createElement("table");
+    juniorTable.className = "";
+    // juniorTable.className = "table table-dark table-bordered";
+    juniorTable.className = "";
+
+    juniorTable.innerHTML = `
+    <tr>
+        <th>Employee Name</th>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    `;
+
+    junior_employees.forEach(employee => {
+
+        employee.products_in_cart.forEach(product => {
+
+            juniorTable.innerHTML += `
+            <tr>
+                <td>${employee.name}</td>
+                <td>${product.Pname}</td>
+                <td>${product.cost}</td>
+            </tr>
+            `;
+
+        });
+
+    });
+
+    document.querySelector(".visitor-card").appendChild(juniorTable);
+
+
+
+
+
+
+
+    </script>
+        
+    </body>
+</html>
